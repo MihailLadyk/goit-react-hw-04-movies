@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Component } from "react";
 import queryString from "query-string";
 import Searchbar from "../Components/Searchbar";
@@ -20,6 +21,7 @@ export default class MoviesPage extends Component {
         .then((res) => this.setState({ movies: res.data.results }))
         .catch((error) => this.setState({ error }))
         .finally(() => this.setState({ loading: false }));
+
     }
   }
 
@@ -54,13 +56,20 @@ export default class MoviesPage extends Component {
         {movies.length > 0 && (
           <ul>
             {movies.map((movie) => (
-              <li>
+              <li key={movie.id}>
                 <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
               </li>
             ))}
+            
           </ul>
         )}
       </div>
     );
   }
+}
+
+
+MoviesPage.propTypes = {
+history: PropTypes.object,
+location: PropTypes.object
 }

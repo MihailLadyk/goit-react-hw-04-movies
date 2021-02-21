@@ -27,7 +27,7 @@ export default class HomePage extends Component {
         {movies.length > 0 && (
           <ul>
             {movies.map((movie) => (
-              <li>
+              <li key={movie.id}>
                 <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
               </li>
             ))}

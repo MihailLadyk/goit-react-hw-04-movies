@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Link, Route } from "react-router-dom";
 import { fetchMovieDetails } from "../../services/movieApi";
 import { Component } from "react";
@@ -91,3 +92,9 @@ export default class MovieDetailsPage extends Component {
     );
   }
 }
+
+MovieDetailsPage.propTypes = {
+  match: PropTypes.object,
+  location: PropTypes.object,
+  history: PropTypes.object,
+};
